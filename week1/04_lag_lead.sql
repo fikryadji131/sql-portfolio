@@ -1,9 +1,9 @@
 -- W1.4 LAG / LEAD: banding periode sebelum/sesudah
 WITH monthly AS (
   SELECT
-    DATE_TRUNC(DATE(created_at), MONTH) AS bulan,
-    SUM(sale_price) AS sales
-  FROM `bigquery-public-data.thelook_ecommerce.order_items`
+    DATE_TRUNC('month', "Order Date")::date AS bulan,
+    SUM("Sales") AS sales
+  FROM superstore
   GROUP BY 1
 )
 SELECT

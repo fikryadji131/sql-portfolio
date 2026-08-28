@@ -1,23 +1,21 @@
 -- W1.5 Capstone: Top 3 produk termahal per kategori + running total penjualannya
 WITH ranked AS (
   SELECT
-    p.category,
-    p.name AS product_name,
-    p.sale_price,
-    ROW_NUMBER() OVER (
-      PARTITION BY p.category ORDER BY p.sale_price DESC
-    ) AS price_rank
-  FROM `bigquery-public-data.thelook_ecommerce.products` p
+    "Category",
+    "Product Name",
+    "Sales",
+    ROW_NUMBER() OVER (PARTITION BY "Category" ORDER BY "Sales" DESC) AS sales_rank
+  FROM superstore
 )
 SELECT
-  category,
-  product_name,
-  sale_price,
-  price_rank,
-  SUM(sale_price) OVER (
-    PARTITION BY category ORDER BY price_rank
+  "Category",
+  "Product Name",
+  "Sales",
+  sales_rank,
+  SUM("Sales") OVER (
+    PARTITION BY "Category" ORDER BY sales_rank
     ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
   ) AS running_total_category
 FROM ranked
-WHERE price_rank <= 3
-ORDER BY category, price_rank;
+WHERE sales_rank <= 3
+ORDER BY "Category", sales_rank;
