@@ -1,10 +1,10 @@
 # SQL Portfolio — Fikry Adji
 
-Latihan SQL progresif untuk peralihan Data Analyst → Data Engineer.
-Semua query dijalankan di **PostgreSQL (via DBeaver)** — bukan BigQuery.
+Latihan SQL progresif untuk Data Analyst.
+Semua query dijalankan di **PostgreSQL (via DBeaver)**.
 
 ## Struktur
-- `week1/` — Window Functions (Postgres) + setup Git
+- `week1/`  Window Functions (Postgres) + setup Git
 
 ## Stack
 - SQL engine: PostgreSQL + DBeaver
